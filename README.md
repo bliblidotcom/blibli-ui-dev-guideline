@@ -389,17 +389,3 @@ add vue-h-zoom for my review page in zoomable review image component
 
 https://www.npmjs.com/package/vue-cat-carousel
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
