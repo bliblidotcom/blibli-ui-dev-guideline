@@ -18,6 +18,7 @@ Before Continue to the content make sure you already read and understand this fo
 1. Common
 2. CSS 
 3. VueJs
+4. Commit Message standardisation
 
 ## Common
 
@@ -329,6 +330,76 @@ mixins: [
     :lazy-src="akamaiImage(test.imageUrl)"
 />
 ```
+
+### Commit Message Standardisation
+
+```
+${Type} - {Subject} 
+
+${Body}
+
+${Reference}
+```
+
+####Type
+
+This should be filled by type of your task
+ 
+- feature: add new feature
+- bugfix: a bug fixing
+- test: unit test improvement
+- config: updating depedencies or build configuration
+
+####Subject
+
+Essence description about your task
+
+#### Body (optional)
+To explain something about the task or explain how you doing this task
+
+#### Reference (optional)
+For external when doing the task
+
+#### Example
+
+```
+feature - product review detail implementation
+
+register new routes for review detail page,
+add new pages component for review detail,
+breakdown each content into smaller components (review info, review rating, review other product)
+create interaction with lazy load component using intersection observer
+
+https://app.zeplin.io/project/123123
+https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+https://stackoverflow.com/questions/43663665/what-is-the-use-case-of-intersectionobserver
+```
+
+```
+bugfix - fixing broken image in my review page if backend didn't return the correct image url
+
+add blibli.com default image if the image is not found 
+```
+
+```
+config - Add vue-cat-carousel and vue-h-zoom library
+
+add vue-cat-carousel for product review page in other review component
+add vue-h-zoom for my review page in zoomable review image component
+
+https://www.npmjs.com/package/vue-cat-carousel
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
