@@ -341,7 +341,7 @@ ${Body}
 ${Reference}
 ```
 
-####Type
+#### Type
 
 This should be filled by type of your task
  
@@ -350,7 +350,7 @@ This should be filled by type of your task
 - test: unit test improvement
 - config: updating depedencies or build configuration
 
-####Subject
+#### Subject
 
 Essence description about your task
 
