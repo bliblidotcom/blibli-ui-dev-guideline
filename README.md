@@ -16,9 +16,10 @@ Before Continue to the content make sure you already read and understand this fo
 ## Table of Contents
 
 1. Common
-2. CSS 
-3. VueJs
-4. Commit Message standardisation
+2. Naming
+3. CSS 
+4. VueJs
+5. Commit Message standardisation
 
 ## Common
 
@@ -104,36 +105,6 @@ export default {
 
 ```
 
-### Use if shorthand syntax
-
-```js
-//bad approach
-computed: {
-    goodStudents () {
-      if(this.student.score > 7){
-        return 'I am the good guy'
-      } else {
-        return 'I am the bad guy, duh '
-      }
-    }
-}
-
-//good approach
-computed: {
-    goodStudents () {
-      if(this.student.score > 7) return 'I am the good guy'
-      else return 'I am the bad guy, duh '
-    }
-}
-
-//best approach
-computed: {
-    goodStudents () {
-      return this.student.score > 7 ? 'I am the good guy': 'I am the bad guy, duh '
-    }
-}
-```
-
 ### Copied array or object in javascript
 ```js
 //bad approach 
@@ -145,7 +116,7 @@ const variable3 = ['lucky', 'cat']
 const variable5 = variable3
 
 
-//good approach (So last year)
+//good approach 
 
 const variable1 = {name : 'cat'}
 const variable2 = Object.assign({}, variable1)
@@ -154,7 +125,7 @@ const variable3 = ['lucky', 'cat']
 const variable5 = variable3.slice(0)
 
 
-//best approach (Wow So trendy)
+//best approach 
 
 const variable1 = {name : 'cat'}
 const variable2 = {...variable1}
@@ -168,6 +139,47 @@ const variable5 = [...variable3]
 
 Reduce image until it's very small with tinypng.com
 Reduce svg size with https://jakearchibald.github.io/svgomg/ with compression level 2
+
+## Naming
+
+### Props
+
+Vue Component name
+
+Reference: https://vuejs.org/v2/style-guide/#Multi-word-component-names-essential
+```vue
+<ChildComponent /> // If you don't give any attribute use self closing tag
+<ChildComponent 
+    :title="title"
+></ChildComponent>
+```
+
+```js
+export default {
+  name: 'ChildComponent',
+}
+```
+
+Vue Props name
+
+```vue
+<ChildComponent 
+    :child-data="childData"> //use kebab case for props name 
+></ChildComponent>
+```
+
+```js
+export default {
+  name: 'ChildComponent',
+  props: {
+    childData: { // use camelCase
+      type: 'Object', //better define the props type
+      default: {}   // better give default value for props
+    }
+  } 
+}
+```
+
 
 ## CSS
 
@@ -289,17 +301,42 @@ export default {
   }
 }
 ```
+
+### Using filter in vuejs
+Import only spesific function you want to use (Tree Shaking Approach)
+
+```js
+import { currencyFormat } from '@/filters'
+export default {
+  name: 'App',
+  data() {
+    return {
+      price: 1000
+    }
+  },
+  filters: {
+    currencyFormat
+  },
+}
+```
+```vue
+<template>
+    <div>{{ price | currencyFormat }}</div>
+</template>
+```
+
 ### Use Lazy Load image Component from Py-Main
-How To install it 
-1. npm Install --save supports-webp
+How To use it
+1. Read supportsWebP variable from pyeongyang main store
 2. Add util with name "asset.js"
 
 ```js
-import supportsWebP from 'supports-webp'
+import store from '@/store'
+
 
 function akamaiImage (url) {
   if (!url) return
-  if (!supportsWebP || url.indexOf('.gif') > -1) return url
+  if (!store.getters.supportsWebP || url.indexOf('.gif') > -1) return url
   const prefix = url.indexOf('?') > -1 ? '&' : '?'
   return url + prefix + 'output-format=webp'
 }
