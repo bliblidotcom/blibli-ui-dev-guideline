@@ -19,7 +19,7 @@ Before Continue to the content make sure you already read and understand this fo
 2. Naming
 3. CSS 
 4. VueJs
-5. Commit Message standardisation
+5. Commit Message Standardization
 
 ## Common
 
@@ -148,33 +148,33 @@ Vue Component name
 
 Reference: https://vuejs.org/v2/style-guide/#Multi-word-component-names-essential
 ```vue
-<ChildComponent /> // If you don't give any attribute use self closing tag
-<ChildComponent 
+<ComponentName /> // If you don't give any attribute use self closing tag
+<ComponentName 
     :title="title"
-></ChildComponent>
+></ComponentName>
 ```
 
 ```js
 export default {
-  name: 'ChildComponent',
+  name: 'ComponentName',
 }
 ```
 
 Vue Props name
 
 ```vue
-<ChildComponent 
-    :child-data="childData"> //use kebab case for props name 
-></ChildComponent>
+<ComponentName 
+    :component-props="data"> //use kebab case for props name 
+></ComponentName>
 ```
 
 ```js
 export default {
-  name: 'ChildComponent',
+  name: 'ComponentName',
   props: {
-    childData: { // use camelCase
+    componentProps: { // use camelCase
       type: 'Object', //better define the props type
-      default: {}   // better give default value for props
+      default: () => ({})  // better give default value for props
     }
   } 
 }
@@ -302,8 +302,14 @@ export default {
 }
 ```
 
-### Using filter in vuejs
-Import only spesific function you want to use (Tree Shaking Approach)
+### Using filter in vuejs (not recommended)
+This filter feature will be deprecated in Vue 3 versions
+
+Reference: https://eslint.vuejs.org/rules/no-deprecated-filter.html
+
+Better using utils instead filter
+
+
 
 ```js
 import { currencyFormat } from '@/filters'
